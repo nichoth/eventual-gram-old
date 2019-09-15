@@ -37,23 +37,28 @@ module.exports = function startSSB () {
     // error, warning, notice, or info (Defaults to notice)
     config.logging.level = 'notice'
 
-    return sbot
-        .use(require('scuttlebot/plugins/plugins'))
-        .use(require('scuttlebot/plugins/master'))
-        .use(require('scuttlebot/plugins/gossip'))
-        .use(require('scuttlebot/plugins/replicate'))
-        .use(require('ssb-friends'))
-        .use(require('ssb-blobs'))
-        .use(require('ssb-serve-blobs'))
+    return ssbServer
+        .use(require('ssb-master'))
+        .use(require('ssb-gossip'))
+        .use(require('ssb-replicate'))
         .use(require('ssb-backlinks'))
-        .use(require('ssb-private'))
-        .use(require('ssb-about'))
-        .use(require('ssb-contacts'))
-        .use(require('ssb-query'))
-        .use(require('scuttlebot/plugins/invite'))
-        .use(require('scuttlebot/plugins/local'))
         .call(null, config)
 }
+
+// .use(require('scuttlebot/plugins/plugins'))
+// .use(require('scuttlebot/plugins/master'))
+// .use(require('scuttlebot/plugins/gossip'))
+// .use(require('scuttlebot/plugins/replicate'))
+// .use(require('ssb-friends'))
+// .use(require('ssb-blobs'))
+// .use(require('ssb-serve-blobs'))
+// .use(require('ssb-backlinks'))
+// .use(require('ssb-private'))
+// .use(require('ssb-about'))
+// .use(require('ssb-contacts'))
+// .use(require('ssb-query'))
+// .use(require('scuttlebot/plugins/invite'))
+// .use(require('scuttlebot/plugins/local'))
 
 
 
@@ -68,3 +73,4 @@ module.exports = function startSSB () {
 //         console.log('sbot', err, sbot, config)
 //     }
 // })
+
