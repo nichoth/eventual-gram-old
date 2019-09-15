@@ -30,19 +30,21 @@ module.exports = function startSSB () {
     }
 
     var config = ssbConfigInject(appName, opts)
-    console.log('config', config)
+    // console.log('config', config)
 
     var keyPath = path.join(config.path, 'secret')
     config.keys = ssbKeys.loadOrCreateSync(keyPath)
     // error, warning, notice, or info (Defaults to notice)
     config.logging.level = 'notice'
 
-    return ssbServer
+    var server = ssbServer
         .use(require('ssb-master'))
         .use(require('ssb-gossip'))
         .use(require('ssb-replicate'))
         .use(require('ssb-backlinks'))
         .call(null, config)
+
+    return server
 }
 
 // .use(require('scuttlebot/plugins/plugins'))

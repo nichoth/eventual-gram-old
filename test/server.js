@@ -1,7 +1,9 @@
 var test = require('tape')
-var startSbot = require('../src/server-side/start-ssb')
+var startSSB = require('../src/server-side/start-ssb')
 
 test('sbort starts', function (t) {
-    var sbot = startSbot()
-    t.ok(sbot)
+    t.plan(1)
+    var server = startSSB()
+    t.ok(server)
+    server.close()
 })
