@@ -1,7 +1,7 @@
 {
     "husky": {
         "hooks": {
-            "prepush": "./test/githook/prepush.sh"
+            "pre-push": "./test/githook/prepush.sh"
         }
     },
   "scripts": {
