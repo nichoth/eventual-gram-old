@@ -1,6 +1,5 @@
 // var ssbKeys = require('ssb-keys')
 // var ssbClient = require('ssb-client')
-
 var ssbKeys = require('ssb-keys')
 var ssbConfigInject = require('ssb-config/inject')
 var path = require('path')
@@ -8,6 +7,7 @@ var path = require('path')
 var ssbServer = require('ssb-server')
 
 // @TODO check if global sbot is running and use that if possible
+// @TODO can pass in config here
 module.exports = function startSSB () {
     var {
         SBOT_SHS,
@@ -15,11 +15,11 @@ module.exports = function startSSB () {
         APP_NAME,
         NODE_ENV
     } = process.env
-    console.log('env', SBOT_SHS, SBOT_SIGN, APP_NAME, NODE_ENV)
+    // console.log('env', SBOT_SHS, SBOT_SIGN, APP_NAME, NODE_ENV)
 
-    // use dev database
+    // @TODO use passed in config
     var appName = NODE_ENV === 'development' ? 'eg-DEV' : undefined
-    appName = APP_NAME ? APP_NAME : appName
+    appName = APP_NAME ? APP_NAME : 'test-eg'
 
     var opts = {}
     if (process.env.NODE_ENV === 'development') {
@@ -30,6 +30,7 @@ module.exports = function startSSB () {
     }
 
     var config = ssbConfigInject(appName, opts)
+    // console.log('config', config)
     // console.log('config', config)
 
     var keyPath = path.join(config.path, 'secret')

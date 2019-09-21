@@ -5,5 +5,9 @@ test('sbort starts', function (t) {
     t.plan(1)
     var server = startSSB()
     t.ok(server)
-    server.close()
+    server.close(function () {
+        console.log('close')
+    })
 })
+
+
