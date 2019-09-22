@@ -19,7 +19,7 @@ function startSSB () {
 
     // @TODO use passed in config
     // var appName = NODE_ENV === 'development' ? 'eg-DEV' : undefined
-    appName = APP_NAME ? APP_NAME : 'test-eg'
+    // appName = APP_NAME ? APP_NAME : 'test-eg'
 
     var opts = {}
     if (process.env.NODE_ENV === 'development') {
