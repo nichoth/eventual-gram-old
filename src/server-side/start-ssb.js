@@ -1,21 +1,19 @@
 // var ssbKeys = require('ssb-keys')
-// var ssbClient = require('ssb-client')
 var ssbKeys = require('ssb-keys')
 var ssbConfigInject = require('ssb-config/inject')
 var path = require('path')
-// var sbot = require('scuttlebot')
 var ssbServer = require('ssb-server')
 
 // @TODO check if global sbot is running and use that if possible
 // @TODO can pass in config here
-module.exports = function startSSB () {
+function startSSB () {
     var {
         SBOT_SHS,
         SBOT_SIGN,
         APP_NAME,
         NODE_ENV
     } = process.env
-    // console.log('env', SBOT_SHS, SBOT_SIGN, APP_NAME, NODE_ENV)
+    console.log('env', SBOT_SHS, SBOT_SIGN, APP_NAME, NODE_ENV)
 
     // @TODO use passed in config
     var appName = NODE_ENV === 'development' ? 'eg-DEV' : undefined
@@ -30,8 +28,7 @@ module.exports = function startSSB () {
     }
 
     var config = ssbConfigInject(appName, opts)
-    // console.log('config', config)
-    // console.log('config', config)
+    console.log('config', config)
 
     var keyPath = path.join(config.path, 'secret')
     config.keys = ssbKeys.loadOrCreateSync(keyPath)
@@ -47,6 +44,12 @@ module.exports = function startSSB () {
 
     return server
 }
+
+if (require.main === module) {
+    startSSB()
+}
+
+module.exports = startSSB
 
 // .use(require('scuttlebot/plugins/plugins'))
 // .use(require('scuttlebot/plugins/master'))
