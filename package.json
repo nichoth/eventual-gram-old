@@ -1,4 +1,21 @@
 {
+  "name": "eventual-gram",
+  "description": "WIP",
+  "version": "0.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nichoth/eventual-gram.git"
+  },
+  "author": "Nick Thomas <nichoth@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nichoth/eventual-gram/issues"
+  },
+  "homepage": "https://github.com/nichoth/eventual-gram#readme",
   "husky": {
     "hooks": {
       "pre-push": "./test/githook/prepush.sh"
@@ -64,22 +81,5 @@
     "tape": "^4.8.0",
     "uglify-js": "^3.6.0",
     "unassertify": "^2.1.1"
-  },
-  "name": "eventual-gram",
-  "description": "WIP",
-  "version": "0.0.0",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nichoth/eventual-gram.git"
-  },
-  "author": "Nick Thomas <nichoth@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nichoth/eventual-gram/issues"
-  },
-  "homepage": "https://github.com/nichoth/eventual-gram#readme"
+  }
 }

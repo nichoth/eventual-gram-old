@@ -1,8 +1,10 @@
 // var ssbKeys = require('ssb-keys')
 var ssbKeys = require('ssb-keys')
-var ssbConfigInject = require('ssb-config/inject')
+// var ssbConfigInject = require('ssb-config/inject')
+var ssbConfig = require('ssb-config')
 var path = require('path')
 var ssbServer = require('ssb-server')
+var fs = require('fs')
 
 // @TODO check if global sbot is running and use that if possible
 // @TODO can pass in config here
@@ -27,20 +29,29 @@ function startSSB () {
         }
     }
 
-    var config = ssbConfigInject(appName, opts)
-    console.log('config', config)
+    // var config = ssbConfig()
+    // var config = ssbConfigInject(appName, opts)
+    // console.log('config', config)
 
-    var keyPath = path.join(config.path, 'secret')
-    config.keys = ssbKeys.loadOrCreateSync(keyPath)
+    // var keyPath = path.join(config.path, 'secret')
+    // config.keys = ssbKeys.loadOrCreateSync(keyPath)
     // error, warning, notice, or info (Defaults to notice)
-    config.logging.level = 'notice'
+    // config.logging.level = 'notice'
 
-    var server = ssbServer
+    ssbServer
         .use(require('ssb-master'))
         .use(require('ssb-gossip'))
         .use(require('ssb-replicate'))
         .use(require('ssb-backlinks'))
-        .call(null, config)
+        // .call(null, config)
+
+    var server = ssbServer(ssbConfig)
+
+    var manifest = server.getManifest()
+    fs.writeFileSync(
+        path.join(ssbConfig.path, 'manifest.json'), // ~/.ssb/manifest.json
+        JSON.stringify(manifest)
+    )
 
     return server
 }
@@ -50,33 +61,3 @@ if (require.main === module) {
 }
 
 module.exports = startSSB
-
-// .use(require('scuttlebot/plugins/plugins'))
-// .use(require('scuttlebot/plugins/master'))
-// .use(require('scuttlebot/plugins/gossip'))
-// .use(require('scuttlebot/plugins/replicate'))
-// .use(require('ssb-friends'))
-// .use(require('ssb-blobs'))
-// .use(require('ssb-serve-blobs'))
-// .use(require('ssb-backlinks'))
-// .use(require('ssb-private'))
-// .use(require('ssb-about'))
-// .use(require('ssb-contacts'))
-// .use(require('ssb-query'))
-// .use(require('scuttlebot/plugins/invite'))
-// .use(require('scuttlebot/plugins/local'))
-
-
-
-// var keys = ssbKeys.loadOrCreateSync('./test-keys.key')
-
-// ssbClient(keys, {
-//     caps: {
-//         shs: '',
-//     },
-//     manifest: '~/.ssb/manifest.json',
-//     function (err, sbot, config) {
-//         console.log('sbot', err, sbot, config)
-//     }
-// })
-
