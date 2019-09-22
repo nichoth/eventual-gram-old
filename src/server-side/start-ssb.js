@@ -1,5 +1,5 @@
 // var ssbKeys = require('ssb-keys')
-var ssbKeys = require('ssb-keys')
+// var ssbKeys = require('ssb-keys')
 // var ssbConfigInject = require('ssb-config/inject')
 var ssbConfig = require('ssb-config')
 var path = require('path')
@@ -18,7 +18,7 @@ function startSSB () {
     console.log('env', SBOT_SHS, SBOT_SIGN, APP_NAME, NODE_ENV)
 
     // @TODO use passed in config
-    var appName = NODE_ENV === 'development' ? 'eg-DEV' : undefined
+    // var appName = NODE_ENV === 'development' ? 'eg-DEV' : undefined
     appName = APP_NAME ? APP_NAME : 'test-eg'
 
     var opts = {}
