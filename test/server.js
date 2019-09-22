@@ -1,7 +1,7 @@
 var test = require('tape')
 var startSSB = require('../src/server-side/start-ssb')
 
-test('sbort starts', function (t) {
+test('sbot starts', function (t) {
     t.plan(1)
     var server = startSSB()
     t.ok(server)
@@ -9,5 +9,3 @@ test('sbort starts', function (t) {
         console.log('close')
     })
 })
-
-
