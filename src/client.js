@@ -1,9 +1,10 @@
 var ssbClient = require('ssb-client')
 
-function start () {
+function start (cb) {
     ssbClient(function (err, sbot) {
         if (err) return console.log('err', err)
-        console.log('sbot', sbot)
+        // console.log('sbot', sbot)
+        cb(err, sbot)
     })
 }
 

@@ -6,6 +6,6 @@ test('sbot starts', function (t) {
     var server = startSSB()
     t.ok(server)
     server.close(function () {
-        console.log('close')
+        // console.log('close')
     })
 })
