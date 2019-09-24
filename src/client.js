@@ -8,6 +8,7 @@ function start (cb) {
     })
 }
 
+console.log('client', require.main === module)
 if (require.main === module) {
     start()
 }

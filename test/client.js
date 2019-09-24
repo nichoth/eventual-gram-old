@@ -2,7 +2,12 @@ var test = require('tape')
 var Server = require('../src/server-side/start-ssb')
 var Client = require('../src/client')
 
-var server = Server()
+var server
+test('pre', function(t) {
+    server = Server()
+    t.end()
+})
+
 test('start client', function (t) {
     t.plan(1)
     Client(function (err, sbot) {
@@ -12,6 +17,7 @@ test('start client', function (t) {
 })
 
 test('done', function(t) {
-    server.close()
-    t.end()
+    server.close(function () {
+        t.end()
+    })
 })

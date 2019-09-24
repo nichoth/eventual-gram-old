@@ -56,6 +56,8 @@ function startSSB () {
     return server
 }
 
+console.log('eq', require.main === module)
+
 if (require.main === module) {
     startSSB()
 }
