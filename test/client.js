@@ -1,6 +1,6 @@
 var test = require('tape')
 var Server = require('../src/server-side/start-ssb')
-var Client = require('../src/client')
+var Client = require('../src/rpc-sbot')
 
 var server
 test('pre', function(t) {
