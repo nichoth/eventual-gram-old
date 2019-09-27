@@ -1,8 +1,9 @@
 var ssbClient = require('ssb-client')
+var manifest = require('../manifest.json')
 
 function start (cb) {
-    ssbClient(function (err, sbot) {
-        if (err) return console.log('err', err)
+    ssbClient({ manifest }, function (err, sbot) {
+        if (err) throw err
         // console.log('sbot', sbot)
         cb(err, sbot)
     })

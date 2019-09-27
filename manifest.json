@@ -1,0 +1,56 @@
+{
+    "add": "async",
+    "address": "sync",
+    "auth": "async",
+    "backlinks": {
+        "read": "source"
+    },
+    "clock": "async",
+    "createFeedStream": "source",
+    "createHistoryStream": "source",
+    "createLogStream": "source",
+    "createUserStream": "source",
+    "createWriteStream": "sink",
+    "get": "async",
+    "getAddress": "sync",
+    "getLatest": "async",
+    "getVectorClock": "async",
+    "gossip": {
+        "add": "sync",
+        "changes": "source",
+        "connect": "async",
+        "disable": "sync",
+        "disconnect": "async",
+        "enable": "sync",
+        "get": "sync",
+        "help": "sync",
+        "peers": "sync",
+        "ping": "duplex",
+        "reconnect": "sync",
+        "remove": "sync"
+    },
+    "help": "sync",
+    "latest": "source",
+    "latestSequence": "async",
+    "links": "source",
+    "manifest": "sync",
+    "messagesByType": "source",
+    "multiserver": {
+        "address": "sync",
+        "parse": "sync"
+    },
+    "multiserverNet": {},
+    "progress": "sync",
+    "publish": "async",
+    "replicate": {
+        "block": "sync",
+        "changes": "source",
+        "request": "sync",
+        "upto": "source"
+    },
+    "seq": "async",
+    "status": "sync",
+    "usage": "sync",
+    "version": "sync",
+    "whoami": "sync"
+}
