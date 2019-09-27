@@ -1,6 +1,7 @@
 var test = require('tape')
 var Server = require('../src/server-side/start-ssb')
 var Client = require('../src/rpc-sbot')
+var ssbKeys = require('ssb-keys')
 
 var server
 test('pre', function(t) {
@@ -11,7 +12,7 @@ test('pre', function(t) {
 var sbot
 test('start client', function (t) {
     t.plan(1)
-    Client(function (err, _sbot) {
+    Client({}, function (err, _sbot) {
         if (err) throw err
         sbot = _sbot
         t.ok(_sbot, 'got rpc sbot')
@@ -19,7 +20,8 @@ test('start client', function (t) {
 })
 
 test('rpc call', function (t) {
-    sbot.whoami(function (err, res) {
+    var keys = ssbKeys.generate()
+    sbot.whoami({ keys }, function (err, res) {
         t.plan(2)
         t.ok(res, 'should return via rpc')
         t.error(err, 'no error')
