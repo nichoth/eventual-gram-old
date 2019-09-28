@@ -12,10 +12,11 @@ test('pre', function(t) {
 var sbot
 test('start client', function (t) {
     t.plan(1)
-    Client({}, function (err, _sbot) {
+    var keys = ssbKeys.generate()
+    Client({ keys }, function (err, _sbot) {
         if (err) throw err
         sbot = _sbot
-        t.ok(_sbot, 'got rpc sbot')
+        t.ok(_sbot, 'rpc sbot')
     })
 })
 
@@ -28,8 +29,9 @@ test('rpc call', function (t) {
     })
 })
 
-test('done', function(t) {
-    server.close(function () {
+test('all done', function(t) {
+    server.close(function (err) {
+        if (err) throw err
         t.end()
     })
 })

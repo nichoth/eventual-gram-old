@@ -9,8 +9,9 @@ test('sbot starts', function (t) {
 })
 
 test('done', function (t) {
-    server.close(function () {
-        // console.log('close')
+    server.close(function (err) {
+        if (err) throw err
         t.end()
+        console.log('close')
     })
 })
