@@ -1,9 +1,9 @@
 var ssbClient = require('ssb-client')
 var manifest = require('../manifest.json')
-ssbKeys = require('ssb-keys')
+var ssbKeys = require('ssb-keys')
+
 
 function start (opts, cb) {
-    if (opts) var { keys } = opts
     if (typeof opts === 'function') {
         cb = opts
         opts = {}
