@@ -1,5 +1,5 @@
 var Sbot = require('./rpc-sbot')
-var { render } = require('preact')
+var { render, h } = require('preact')
 var state = require('./state')
 var connect = require('@nichoth/preact-connect')
 var View = require('./view')

@@ -1,7 +1,10 @@
 var { h } = require('preact')
 
-function View (props) {
+function App (props) {
+    console.log('render', props)
+    // return h('div', {}, ['hello world'])
+    // return h('div', {}, ['hello world'])
     return <div>hello world</div>
 }
 
-module.exports = View
+module.exports = App

@@ -1,7 +1,6 @@
 var observ = require('observ')
 var struct = require('observ-struct')
 
-                ccc
 function State () {
     var state = struct({
         foo: struct({ foo: observ('bar') }),
