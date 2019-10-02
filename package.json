@@ -3,6 +3,13 @@
   "description": "WIP",
   "version": "0.0.0",
   "main": "index.js",
+  "aliasify": {
+    "aliases": {
+      "react": "preact-compat",
+      "react-dom": "preact-compat",
+      "create-react-class": "preact-compat/lib/create-react-class"
+    }
+  },
   "directories": {
     "test": "test"
   },
@@ -24,7 +31,7 @@
   "scripts": {
     "start": "concurrently --kill-others \"npm run server-side\"  \"npm run serve\" \"npm run sass-watch\"",
     "server-side": "node ./src/server-side/start-ssb",
-    "serve": "env $(cat .env | xargs) budo src/index.js:bundle.js --pushstate --dir=public --live -- -t [ babelify --presets [@babel/preset-env] ] -t [ envify --NODE_ENV development ] -dv",
+    "serve": "env $(cat .env | xargs) budo src/index.js:bundle.js --pushstate --dir=public --live -- -t babelify -g aliasify -t [ envify --NODE_ENV development ] -dv",
     "sass-watch": "node-sass --watch src/style/main.scss --source-map-embed public/style.css",
     "build": "npm run build-js && npm run build-css",
     "preversion": "npm run lint && npm run deps && npm test",
@@ -35,18 +42,13 @@
     "deps": "dependency-check package.json && dependency-check package.json --unused --entry test/*.js -i dependency-check -i eslint -i eslint-config-minlint -i tap-spec",
     "test": "tape test/*.js | tap-spec"
   },
-  "aliasify": {
-    "aliases": {
-      "react": "preact-compat",
-      "react-dom": "preact-compat",
-      "create-react-class": "preact-compat/lib/create-react-class"
-    }
-  },
   "dependencies": {
     "@nichoth/catch-routes": "^1.0.3",
     "@nichoth/events": "^1.1.2",
     "@nichoth/preact-connect": "^1.1.0",
     "muxrpc": "^6.4.2",
+    "observ": "^0.2.0",
+    "observ-struct": "^6.0.0",
     "preact": "^8.5.2",
     "preact-compat": "^3.19.0",
     "pull-stream": "^3.6.14",
