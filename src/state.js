@@ -8,7 +8,7 @@ function State () {
         files: struct({
             seeding: observ([]),
             downloading: observ([])
-       })
+        })
     })
 
     return state
