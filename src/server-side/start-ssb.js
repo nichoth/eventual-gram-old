@@ -1,7 +1,6 @@
 // var ssbKeys = require('ssb-keys')
-// var ssbKeys = require('ssb-keys')
-// var ssbConfigInject = require('ssb-config/inject')
-var ssbConfig = require('ssb-config')
+// var ssbConfig = require('ssb-config')
+var ssbConfig = require('ssb-config/inject')
 // var path = require('path')
 var ssbServer = require('ssb-server')
 // var fs = require('fs')
@@ -45,7 +44,7 @@ function startSSB () {
         .use(require('ssb-backlinks'))
         // .call(null, config)
 
-    var server = ssbServer(ssbConfig)
+    var server = ssbServer(ssbConfig('test-eg', { port: 9999 }))
 
     // var manifest = server.getManifest()
     // fs.writeFileSync(
