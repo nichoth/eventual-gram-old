@@ -11,8 +11,9 @@ function startSSB () {
         .use(require('ssb-replicate'))
         .use(require('ssb-backlinks'))
 
+    var conf = ssbConfig('test-eg', { port: 9999 })
     // var server = ssbServer(ssbConfig)
-    var server = ssbServer(ssbConfig('test-eg', { port: 9999 }))
+    var server = ssbServer(conf)
     // var server = ssbServer(ssbConfig('test-eg'))
 
     return server

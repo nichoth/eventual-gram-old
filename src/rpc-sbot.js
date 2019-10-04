@@ -10,7 +10,7 @@ function start (opts, cb) {
     
     opts.manifest = opts.manifest || manifest
     opts.keys = opts.keys || ssbKeys.generate()
-    opts.port = 9999
+    // opts.port = 9999
     ssbClient(opts, function (err, sbot) {
         if (err) throw err
         cb(err, sbot)
