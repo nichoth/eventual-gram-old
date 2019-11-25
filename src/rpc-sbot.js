@@ -7,8 +7,9 @@ function start (opts, cb) {
         cb = opts
         opts = {}
     }
-    
+
     opts.manifest = opts.manifest || manifest
+    // var keys = opts.keys || ssbKeys.generate()
     opts.keys = opts.keys || ssbKeys.generate()
     // opts.port = 9999
     ssbClient(opts, function (err, sbot) {
@@ -17,9 +18,9 @@ function start (opts, cb) {
     })
 }
 
-console.log('client', require.main === module)
 if (require.main === module) {
     start()
 }
 
 module.exports = start
+

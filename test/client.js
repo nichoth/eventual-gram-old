@@ -13,6 +13,9 @@ var sbot
 test('start client', function (t) {
     t.plan(1)
     var keys = ssbKeys.generate()
+    // Client({}, function (err, sbot) {
+    //     t.end()
+    // })
     Client({ keys }, function (err, _sbot) {
         if (err) throw err
         sbot = _sbot

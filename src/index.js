@@ -18,8 +18,8 @@ Sbot(function (err, sbot) {
 if (process.env.NODE_ENV === 'development') {
     window.app = {
         state,
-        effects,
+        // effects,
         view: bus,
-        evs
+        // evs
     }
 }
