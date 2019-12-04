@@ -29,7 +29,7 @@
     }
   },
   "scripts": {
-    "start": "concurrently --kill-others \"npm run server-side\"  \"npm run serve\" \"npm run sass-watch\"",
+    "start": "concurrently --kill-others \"npm run server-side\" \"npm run serve\" \"npm run sass-watch\"",
     "server-side": "node ./src/server-side/start-ssb",
     "serve": "env $(cat .env | xargs) budo src/index.js:bundle.js --pushstate --dir=public --live -- -t babelify -g aliasify -t [ envify --NODE_ENV development ] -dv",
     "sass-watch": "node-sass --watch src/style/main.scss --source-map-embed public/style.css",
